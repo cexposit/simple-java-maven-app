@@ -1,7 +1,6 @@
 #!/bin/bash
 
 echo "script username is $USERNAME"
-#echo -n $USERNAME | wc -c
 echo "script password is $PASSWORD"
 #echo -n $PASSWORD | wc -c
 

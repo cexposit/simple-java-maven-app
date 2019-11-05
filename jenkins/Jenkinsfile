@@ -9,6 +9,7 @@ pipeline {
         stage('Pre-Build') {
             steps {
                 script {
+                    // credentialsId is the identifier associated to the credentials: JENKINS_IP:8080/credentials
                     withCredentials([usernamePassword(credentialsId: 'abf7cd69-6911-432d-a964-ef990ae04da5', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
 	                sh './jenkins/scripts/script-prebuild.sh'
                     }

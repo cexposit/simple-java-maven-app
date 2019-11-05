@@ -39,10 +39,10 @@ pipeline {
                 sh './jenkins/scripts/deliver.sh'
             }
         }
-        post {
-            success {
-                sh 'rm -rf kaizten-utils'
-            }
+    }
+    post {
+        success {
+            sh 'rm -rf kaizten-utils'
         }
     }
 }

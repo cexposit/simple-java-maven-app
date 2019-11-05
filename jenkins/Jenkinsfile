@@ -15,6 +15,7 @@ pipeline {
 //	                sh './jenkins/scripts/script-dependencies.sh'
                         sh 'echo "script username is $USERNAME"'
                         sh 'echo "script password is $PASSWORD"'
+                        sh 'rm -rf kaizten-utils'
                         sh 'git clone https://cexposit:$PASSWORD@github.com/kaizten/kaizten-utils'
                         sh 'cp jenkins/scripts/pom-utils.xml kaizten-utils/pom.xml'
                         sh 'cd kaizten-utils'

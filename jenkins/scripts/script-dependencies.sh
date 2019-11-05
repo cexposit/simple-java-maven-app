@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "script username is $USERNAME"
-echo "script password is $PASSWORD"
+echo "script password is $PASSWORD" 
 #echo -n $PASSWORD | wc -c
 
 #export GIT_USER=$USERNAME

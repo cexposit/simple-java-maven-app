@@ -6,22 +6,22 @@ pipeline {
     }
 
     stages {
-        stage('Build') {
+        stage('Pre-Build') {
             steps {
                 script {
                     withCredentials([usernamePassword(credentialsId: 'abf7cd69-6911-432d-a964-ef990ae04da5', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-//                        sh 'echo $PASSWORD'
-//                        echo "username is $USERNAME"
-//	                sh './jenkins/scripts/script-dependencies.sh'
-                        sh 'echo "script username is $USERNAME"'
-                        sh 'echo "script password is $PASSWORD"'
-                        sh 'rm -rf kaizten-utils'
-                        sh 'git clone https://cexposit:$PASSWORD@github.com/kaizten/kaizten-utils'
-                        sh 'cp jenkins/scripts/pom-utils.xml kaizten-utils/pom.xml'
-                        sh 'cd kaizten-utils'
-                        sh 'mvn clean install'
+	                sh './jenkins/scripts/script-prebuild.sh'
                     }
                 }
+            }
+            post {
+                success {
+                    sh 'rm -rf kaizten-utils'
+                }
+            }
+        }
+        stage('Build') {
+            steps {
                 sh 'mvn -B -DskipTests clean package'
             }
         }
@@ -39,11 +39,6 @@ pipeline {
             steps {
                 sh './jenkins/scripts/deliver.sh'
             }
-        }
-    }
-    post {
-        success {
-            sh 'rm -rf kaizten-utils'
         }
     }
 }

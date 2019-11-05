@@ -13,7 +13,9 @@ echo -n $GIT_PASSWORD | wc -c
 
 git config credential.helper '!f() { sleep 1; echo "username=${GIT_USER}"; echo "password=${GIT_PASSWORD}"; }; f'
 
-git clone https://github.com/kaizten/kaizten-utils
+#git clone https://github.com/kaizten/kaizten-utils
+git clone https://cexposit:$PASSWORD@github.com/kaizten/kaizten-utils
+
 pwd
 cp pom-utils.xml kaizten-utils/pom.xml
 cd kaizten-utils

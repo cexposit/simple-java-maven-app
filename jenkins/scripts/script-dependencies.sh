@@ -18,7 +18,7 @@ git clone https://cexposit:$PASSWORD@github.com/kaizten/kaizten-utils
 
 pwd
 ls
-cp pom-utils.xml kaizten-utils/pom.xml
+cp jenkins/scripts/pom-utils.xml kaizten-utils/pom.xml
 cd kaizten-utils
 mvn clean install
 

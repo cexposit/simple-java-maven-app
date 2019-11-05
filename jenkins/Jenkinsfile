@@ -1,8 +1,15 @@
 pipeline {
     agent any
+
+    environment {
+        USER_CREDENTIALS = credentials('USER_PASSWORD')
+    }
+
     stages {
         stage('Build') {
             steps {
+                sh "echo $USER_CREDENTIALS_USR"
+                sh "echo $USER_CREDENTIALS_PSW"
                 sh './jenkins/scripts/script-dependencies.sh'
                 sh 'mvn -B -DskipTests clean package'
             }
